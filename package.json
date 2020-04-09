@@ -3,5 +3,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Caio Lesnock <caio.dev@outlook.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch"
+  },
+  "devDependencies": {
+    "babel-loader": "^8.1.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "@babel/core": "^7.9.0"
+  }
 }
