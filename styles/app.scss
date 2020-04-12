@@ -1,0 +1,32 @@
+// Styles
+@import "styles/_font.scss";
+@import "styles/_header.scss";
+
+// Pages
+@import "styles/_home.scss";
+@import "styles/_about.scss";
+@import "styles/_projects.scss";
+@import "styles/_contact.scss";
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+html, body, #app {
+  color: #FFF;
+  width: 100vw;
+  font-family: Oswald, sans-serif;
+}
+
+.page {
+  min-height: 100vh;
+  width: 100vw;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-top: 50px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
