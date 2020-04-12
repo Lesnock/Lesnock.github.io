@@ -1,12 +1,11 @@
 class Scroll {
   constructor() {
-
+    //
   }
 
   load(pages) {
     this.pages = pages
     this.scrollToPageTop()
-    this.listenToScroll()
   }
 
   scrollToPageTop() {
@@ -14,12 +13,6 @@ class Scroll {
       if (pageYOffset >= page.top && pageYOffset < page.bottom) {
         Scroll.toPixel(page.top)
       }
-    })
-  }
-
-  listenToScroll() {
-    document.addEventListener('scroll', () => {
-
     })
   }
 

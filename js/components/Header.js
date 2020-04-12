@@ -1,3 +1,5 @@
+import Scroll from './Scroll'
+
 class Header {
   constructor() {
     this.header = document.querySelector('#app > header')
@@ -19,7 +21,7 @@ class Header {
 
   load(pages) {
     this.pages = pages
-    this.setInitialActiveMenu()
+    this.setActiveMenu()
     this.setInitialStyle()
 
     this.listenToClickMenu()
@@ -29,7 +31,7 @@ class Header {
   /**
    * Set initial active menu on load page
    */
-  setInitialActiveMenu() {
+  setActiveMenu() {
     this.pages.forEach(page => {
       if (pageYOffset >= page.top && pageYOffset < page.bottom) {
         this.changeActiveMenuById(page.id)
@@ -37,6 +39,9 @@ class Header {
     })
   }
 
+  /**
+   * Add/Remove class based on page y position
+   */
   setStyle() {
     if (!this.isOnTop) {
       this.header.classList.add('scrolled')
@@ -46,10 +51,16 @@ class Header {
     }
   }
 
+  /**
+   * Set style when the page is loaded
+   */
   setInitialStyle() {
     this.setStyle()
   }
 
+  /**
+   * Scroll page when click menu
+   */
   listenToClickMenu() {
     const header = this
 
@@ -59,24 +70,29 @@ class Header {
 
         // Remove active class
         const id = event.target.getAttribute('href').replace('#', '')
-        header.changeActiveMenuById(id)
+
+        // Wait page finish moving to change active menu
+        setTimeout(() => {
+          header.changeActiveMenuById(id)
+        }, 100)
 
         // Get Y offset
         const target = event.target.getAttribute('href')
         const yOffset = document.querySelector(target).offsetTop
-
         // Scroll to page
-        window.scrollTo({
-          top: yOffset,
-          behavior: 'smooth'
-        })
+        Scroll.toPixel(yOffset)
       })
     })
   }
 
+  /**
+   * Set the style of the header (scroll and no-scrolled)
+   * page is scrolled
+   */
   listenToScroll() {
     document.addEventListener('scroll', event => {
       this.setStyle()
+      this.setActiveMenu()
     })
   }
 
@@ -93,6 +109,9 @@ class Header {
       .classList.add('active')
   }
 
+  /**
+   * Remove active class from current active menu
+   */
   removeActiveClass() {
     if (this.activeMenu) {
       this.activeMenu.classList.remove('active')
