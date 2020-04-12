@@ -1,6 +1,7 @@
 import Page from './components/Page'
 import Header from './components/Header'
 import Scroll from './components/Scroll'
+import smoothscroll from 'smoothscroll-polyfill'
 
 // Styles
 import '../styles/app.scss'
@@ -12,6 +13,8 @@ class App {
   }
 
   load() {
+    smoothscroll.polyfill()
+
     this.loadPage()
     this.loadHeader()
     this.loadScroll()

@@ -21,6 +21,7 @@ class Header {
 
   load(pages) {
     this.pages = pages
+
     this.setActiveMenu()
     this.setInitialStyle()
 
@@ -43,11 +44,20 @@ class Header {
    * Add/Remove class based on page y position
    */
   setStyle() {
-    if (!this.isOnTop) {
-      this.header.classList.add('scrolled')
+    // const isOnPageTop = this.pages.filter(page => pageYOffset === page.top)
+
+    // if (isOnPageTop.length) {
+    //   this.header.classList.remove('scrolled')
+    // }
+    // else {
+    //   this.header.classList.add('scrolled')
+    // }
+
+    if (this.isOnTop) {
+      this.header.classList.remove('scrolled')
     }
     else {
-      this.header.classList.remove('scrolled')
+      this.header.classList.add('scrolled')
     }
   }
 
@@ -62,19 +72,9 @@ class Header {
    * Scroll page when click menu
    */
   listenToClickMenu() {
-    const header = this
-
     this.menuItems.forEach(menu => {
       menu.addEventListener('click', function (event) {
         event.preventDefault()
-
-        // Remove active class
-        const id = event.target.getAttribute('href').replace('#', '')
-
-        // Wait page finish moving to change active menu
-        setTimeout(() => {
-          header.changeActiveMenuById(id)
-        }, 100)
 
         // Get Y offset
         const target = event.target.getAttribute('href')

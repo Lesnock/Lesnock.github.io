@@ -1,7 +1,28 @@
 #about {
   background-image: linear-gradient(
     rgba(0, 0, 0, 1),
-    rgba(0, 0, 0, .7),
-    rgba(0, 0, 0, 0)
+    rgba(0, 0, 0, .8),
+    rgba(0, 0, 0, .6)
   ), url('/images/about-background.jpg');
+
+  .skills {
+    margin-top: 60px;
+    font-size: 18px;
+    letter-spacing: 1px;
+
+    span {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .skills-items {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      .skill-item {
+        margin-top: 10px;
+      }
+    }
+  }
 }

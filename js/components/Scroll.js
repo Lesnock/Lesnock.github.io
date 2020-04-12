@@ -22,6 +22,15 @@ class Scroll {
       behavior: 'smooth'
     })
   }
+
+  static toId(id) {
+    const element = document.getElementById(id)
+
+    if (element) {
+      const pixel = element.offsetTop
+      this.toPixel(pixel)
+    }
+  }
 }
 
 export default Scroll
